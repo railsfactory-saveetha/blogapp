@@ -1,0 +1,20 @@
+rvm:
+  - 1.8.7
+  - 1.9.2
+  - 1.9.3
+  - ree
+  - jruby-18mode
+  - ruby-head
+branches:
+  only:
+    - master
+    - v1
+    - edge
+before_install: gem update --system
+before_script:
+  - "mysql -e 'create database thinking_sphinx;' > /dev/null"
+  - "psql -c 'create database thinking_sphinx;' -U postgres >/dev/null"
+gemfile:
+  - gemfiles/rails_3_0.gemfile
+  - gemfiles/rails_3_1.gemfile
+  - gemfiles/rails_3_2.gemfile
